@@ -1,0 +1,4 @@
+
+ALTER TABLE public.habits
+ADD COLUMN goal_type TEXT NOT NULL DEFAULT 'daily',
+ADD COLUMN goal_target INTEGER NOT NULL DEFAULT 1;
