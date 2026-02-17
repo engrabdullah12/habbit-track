@@ -20,18 +20,21 @@ export type Database = {
           created_at: string
           habit_id: string
           id: string
+          note: string | null
         }
         Insert: {
           completion_date?: string
           created_at?: string
           habit_id: string
           id?: string
+          note?: string | null
         }
         Update: {
           completion_date?: string
           created_at?: string
           habit_id?: string
           id?: string
+          note?: string | null
         }
         Relationships: [
           {
@@ -45,30 +48,39 @@ export type Database = {
       }
       habits: {
         Row: {
+          archived: boolean
+          category: string
           color: string
           created_at: string
           goal_target: number
           goal_type: string
           id: string
           name: string
+          reminder_time: string | null
           user_id: string
         }
         Insert: {
+          archived?: boolean
+          category?: string
           color?: string
           created_at?: string
           goal_target?: number
           goal_type?: string
           id?: string
           name: string
+          reminder_time?: string | null
           user_id: string
         }
         Update: {
+          archived?: boolean
+          category?: string
           color?: string
           created_at?: string
           goal_target?: number
           goal_type?: string
           id?: string
           name?: string
+          reminder_time?: string | null
           user_id?: string
         }
         Relationships: []
