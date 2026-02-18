@@ -78,12 +78,12 @@ const Dashboard = ({ habits, todayRate, goalsMetCount, bestStreak, weeklyAvg, we
           <div className="flex items-end justify-between gap-3 h-40">
             {weeklyData.map((d, i) => (
               <div key={i} className="flex-1 flex flex-col items-center gap-2">
-                <span className="text-xs text-muted-foreground font-medium">{d.rate}%</span>
+                <span className="text-xs text-foreground/70 font-semibold">{d.rate}%</span>
                 <div className="w-full bg-[hsl(250,30%,15%)] rounded-lg overflow-hidden" style={{ height: "100px" }}>
                   <div className="w-full rounded-lg bg-gradient-to-t from-[hsl(260,80%,65%)] to-[hsl(200,80%,55%)] transition-all duration-500"
                     style={{ height: `${d.rate}%`, marginTop: `${100 - d.rate}%` }} />
                 </div>
-                <span className="text-xs text-muted-foreground font-medium">{d.day}</span>
+                <span className="text-xs text-foreground/70 font-semibold">{d.day}</span>
               </div>
             ))}
           </div>

@@ -20,16 +20,16 @@ const Heatmap = ({ habits, last7Days, isCompleted, onToggle }: HeatmapProps) => 
           <table className="w-full">
             <thead>
               <tr>
-                <th className="text-left text-xs text-muted-foreground font-medium pb-3 pr-4">Habit</th>
+                <th className="text-left text-xs text-foreground/70 font-semibold pb-3 pr-4">Habit</th>
                 {last7Days.map((d, i) => (
-                  <th key={i} className="text-center text-xs text-muted-foreground font-medium pb-3 px-1">{format(d, "EEE")}</th>
+                  <th key={i} className="text-center text-xs text-foreground/70 font-semibold pb-3 px-1">{format(d, "EEE")}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {habits.map((habit) => (
                 <tr key={habit.id}>
-                  <td className="text-sm text-muted-foreground pr-4 py-1.5 max-w-[120px] truncate">{habit.name}</td>
+                  <td className="text-sm text-foreground/80 font-medium pr-4 py-1.5 max-w-[120px] truncate">{habit.name}</td>
                   {last7Days.map((d, i) => {
                     const dateStr = format(d, "yyyy-MM-dd");
                     const done = isCompleted(habit.id, dateStr);
@@ -37,8 +37,8 @@ const Heatmap = ({ habits, last7Days, isCompleted, onToggle }: HeatmapProps) => 
                       <td key={i} className="text-center px-1 py-1.5">
                         <button onClick={() => onToggle(habit.id, dateStr)}
                           className="w-8 h-8 rounded-lg transition-all mx-auto flex items-center justify-center"
-                          style={{ backgroundColor: done ? habit.color : "hsl(250,30%,14%)", opacity: done ? 1 : 0.4 }}>
-                          {done && <span className="text-white text-xs">✓</span>}
+                          style={{ backgroundColor: done ? habit.color : "hsl(250,30%,18%)", opacity: done ? 1 : 0.5 }}>
+                          {done && <span className="text-white text-sm font-bold">✓</span>}
                         </button>
                       </td>
                     );
