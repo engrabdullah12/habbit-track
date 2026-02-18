@@ -15,6 +15,7 @@ import MonthlyCalendar from "@/components/habits/MonthlyCalendar";
 import HabitTemplates from "@/components/habits/HabitTemplates";
 import ArchivedHabits from "@/components/habits/ArchivedHabits";
 import ExportShare from "@/components/habits/ExportShare";
+import TimeTracker from "@/components/habits/TimeTracker";
 
 const HabitTracker = () => {
   const { user, signOut } = useAuth();
@@ -153,6 +154,9 @@ const HabitTracker = () => {
         {/* Heatmap */}
         <Heatmap habits={activeHabits} last7Days={last7Days} isCompleted={isCompleted}
           onToggle={(habitId, date) => toggleCompletion.mutate({ habitId, date })} />
+
+        {/* Time Tracker */}
+        <TimeTracker />
 
         {/* Archived Habits */}
         <ArchivedHabits

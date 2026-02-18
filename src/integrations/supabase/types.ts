@@ -85,6 +85,45 @@ export type Database = {
         }
         Relationships: []
       }
+      time_entries: {
+        Row: {
+          category: string
+          color: string
+          created_at: string
+          duration_seconds: number | null
+          ended_at: string | null
+          id: string
+          is_running: boolean
+          started_at: string
+          task_name: string
+          user_id: string
+        }
+        Insert: {
+          category?: string
+          color?: string
+          created_at?: string
+          duration_seconds?: number | null
+          ended_at?: string | null
+          id?: string
+          is_running?: boolean
+          started_at?: string
+          task_name: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          color?: string
+          created_at?: string
+          duration_seconds?: number | null
+          ended_at?: string | null
+          id?: string
+          is_running?: boolean
+          started_at?: string
+          task_name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
