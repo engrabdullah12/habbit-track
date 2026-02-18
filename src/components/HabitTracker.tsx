@@ -112,6 +112,9 @@ const HabitTracker = () => {
           <HabitTemplates onUseTemplate={(t) => addHabit.mutate({ name: t.name, color: t.color, goalType: t.goal_type, goalTarget: t.goal_target, category: t.category })} />
         )}
 
+        {/* Time Tracker */}
+        <TimeTracker />
+
         {/* Habits List */}
         <div className="space-y-3 mb-10">
           {filteredHabits.length === 0 && (
@@ -154,9 +157,6 @@ const HabitTracker = () => {
         {/* Heatmap */}
         <Heatmap habits={activeHabits} last7Days={last7Days} isCompleted={isCompleted}
           onToggle={(habitId, date) => toggleCompletion.mutate({ habitId, date })} />
-
-        {/* Time Tracker */}
-        <TimeTracker />
 
         {/* Archived Habits */}
         <ArchivedHabits

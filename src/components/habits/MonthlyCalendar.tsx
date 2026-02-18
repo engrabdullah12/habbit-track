@@ -25,11 +25,16 @@ const MonthlyCalendar = ({ habits, isCompleted }: MonthlyCalendarProps) => {
   };
 
   const getColor = (rate: number) => {
-    if (rate === 0) return "hsl(250,30%,14%)";
-    if (rate < 33) return "hsl(260,60%,30%)";
-    if (rate < 66) return "hsl(260,70%,45%)";
-    if (rate < 100) return "hsl(260,80%,55%)";
-    return "hsl(150,70%,45%)";
+    if (rate === 0) return "hsl(250,30%,18%)";
+    if (rate < 33) return "hsl(270,50%,40%)";
+    if (rate < 66) return "hsl(260,65%,55%)";
+    if (rate < 100) return "hsl(255,75%,62%)";
+    return "hsl(150,65%,42%)";
+  };
+
+  const getTextColor = (rate: number) => {
+    if (rate === 0) return "hsl(260,15%,55%)";
+    return "hsl(0,0%,100%)";
   };
 
   return (
@@ -59,8 +64,8 @@ const MonthlyCalendar = ({ habits, isCompleted }: MonthlyCalendarProps) => {
             const isToday = format(day, "yyyy-MM-dd") === format(new Date(), "yyyy-MM-dd");
             return (
               <div key={day.toISOString()} className="aspect-square flex items-center justify-center relative">
-                <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-medium transition-all ${isToday ? "ring-2 ring-[hsl(260,80%,65%)]" : ""}`}
-                  style={{ backgroundColor: getColor(rate), color: rate > 0 ? "white" : "hsl(260,15%,45%)" }}>
+                <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold transition-all ${isToday ? "ring-2 ring-[hsl(260,80%,65%)]" : ""}`}
+                  style={{ backgroundColor: getColor(rate), color: getTextColor(rate) }}>
                   {format(day, "d")}
                 </div>
               </div>
