@@ -41,7 +41,7 @@ const HabitTracker = () => {
       activeHabits.forEach((habit) => {
         if (habit.reminder_time === currentTime && !isCompleted(habit.id, today)) {
           if (Notification.permission === "granted") {
-            new Notification("HabitFlow Reminder 🔔", { body: `Time to: ${habit.name}`, icon: "/favicon.ico" });
+            new Notification("Akestron Tracker Reminder 🔔", { body: `Time to: ${habit.name}`, icon: "/favicon.ico" });
           }
         }
       });
@@ -65,7 +65,7 @@ const HabitTracker = () => {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[hsl(260,80%,65%)] to-[hsl(200,80%,55%)] flex items-center justify-center shadow-lg">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-foreground tracking-tight">HabitFlow</h1>
+            <h1 className="text-2xl font-bold text-foreground tracking-tight">Akestron Tracker</h1>
           </div>
           <div className="flex items-center gap-2">
             <ExportShare habits={activeHabits} completions={completions} bestStreak={bestStreak} todayRate={todayRate} />

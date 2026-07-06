@@ -27,17 +27,17 @@ const ExportShare = ({ habits, completions, bestStreak, todayRate }: ExportShare
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `habitflow-export-${format(new Date(), "yyyy-MM-dd")}.csv`;
+    a.download = `akestron-tracker-export-${format(new Date(), "yyyy-MM-dd")}.csv`;
     a.click();
     URL.revokeObjectURL(url);
     toast({ title: "Exported! 📊" });
   };
 
   const shareProgress = async () => {
-    const text = `🎯 HabitFlow Progress\n📊 Today: ${todayRate}% complete\n🔥 Best Streak: ${bestStreak} days\n💪 Tracking ${habits.length} habits`;
+    const text = `🎯 Akestron Tracker Progress\n📊 Today: ${todayRate}% complete\n🔥 Best Streak: ${bestStreak} days\n💪 Tracking ${habits.length} habits`;
     if (navigator.share) {
       try {
-        await navigator.share({ title: "HabitFlow Progress", text });
+        await navigator.share({ title: "Akestron Tracker Progress", text });
       } catch { /* user cancelled */ }
     } else {
       await navigator.clipboard.writeText(text);
