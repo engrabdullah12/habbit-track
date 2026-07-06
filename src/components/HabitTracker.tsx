@@ -41,7 +41,7 @@ const HabitTracker = () => {
       activeHabits.forEach((habit) => {
         if (habit.reminder_time === currentTime && !isCompleted(habit.id, today)) {
           if (Notification.permission === "granted") {
-            new Notification("HabitFlow Reminder 🔔", { body: `Time to: ${habit.name}`, icon: "/favicon.ico" });
+            new Notification("Akestron Tracker Reminder 🔔", { body: `Time to: ${habit.name}`, icon: "/favicon.ico" });
           }
         }
       });
