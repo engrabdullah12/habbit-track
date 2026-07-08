@@ -73,6 +73,17 @@ const HabitTracker = () => {
           </div>
           <div className="flex items-center gap-2">
             <ExportShare habits={activeHabits} completions={completions} bestStreak={bestStreak} todayRate={todayRate} />
+            {isAdmin && (
+              <Button
+                variant={adminView ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setAdminView(!adminView)}
+                className={adminView ? "bg-gradient-to-r from-[hsl(45,90%,55%)] to-[hsl(30,90%,55%)] text-black" : "text-muted-foreground hover:text-foreground"}
+              >
+                <Shield className="w-4 h-4 mr-1.5" /> {adminView ? "Exit Admin" : "Admin"}
+              </Button>
+            )}
+            <ExportShare habits={activeHabits} completions={completions} bestStreak={bestStreak} todayRate={todayRate} />
             <Button variant="ghost" size="icon" onClick={toggleTheme} className="text-muted-foreground hover:text-foreground">
               {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </Button>
