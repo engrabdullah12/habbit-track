@@ -92,6 +92,10 @@ const HabitTracker = () => {
           </div>
         </div>
 
+        {adminView && isAdmin ? (
+          <AdminDashboard />
+        ) : (
+          <>
         {/* Add Habit */}
         <Card className="mb-6 border-[hsl(260,30%,18%)] bg-[hsl(250,40%,10%,0.6)] backdrop-blur-lg">
           <CardContent className="pt-6">
@@ -178,6 +182,8 @@ const HabitTracker = () => {
           onRestore={(id) => updateHabit.mutate({ id, archived: false })}
           onDelete={(id) => deleteHabit.mutate(id)}
         />
+          </>
+        )}
       </div>
     </div>
   );
