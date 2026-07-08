@@ -5,7 +5,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { LogOut, Sparkles, Target, Sun, Moon, Filter } from "lucide-react";
+import { LogOut, Sparkles, Target, Sun, Moon, Filter, Shield } from "lucide-react";
 import { CATEGORIES } from "@/lib/habitTypes";
 import AddHabitForm from "@/components/habits/AddHabitForm";
 import HabitItem from "@/components/habits/HabitItem";
@@ -16,6 +16,8 @@ import HabitTemplates from "@/components/habits/HabitTemplates";
 import ArchivedHabits from "@/components/habits/ArchivedHabits";
 import ExportShare from "@/components/habits/ExportShare";
 import TimeTracker from "@/components/habits/TimeTracker";
+import AdminDashboard from "@/components/admin/AdminDashboard";
+import { useUserRole } from "@/hooks/useUserRole";
 
 const HabitTracker = () => {
   const { user, signOut } = useAuth();
