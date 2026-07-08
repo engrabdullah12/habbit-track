@@ -5,7 +5,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { LogOut, Sparkles, Target, Sun, Moon, Filter } from "lucide-react";
+import { LogOut, Sparkles, Target, Sun, Moon, Filter, Shield } from "lucide-react";
 import { CATEGORIES } from "@/lib/habitTypes";
 import AddHabitForm from "@/components/habits/AddHabitForm";
 import HabitItem from "@/components/habits/HabitItem";
@@ -16,12 +16,16 @@ import HabitTemplates from "@/components/habits/HabitTemplates";
 import ArchivedHabits from "@/components/habits/ArchivedHabits";
 import ExportShare from "@/components/habits/ExportShare";
 import TimeTracker from "@/components/habits/TimeTracker";
+import AdminDashboard from "@/components/admin/AdminDashboard";
+import { useUserRole } from "@/hooks/useUserRole";
 
 const HabitTracker = () => {
   const { user, signOut } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [showTemplates, setShowTemplates] = useState(false);
+  const [adminView, setAdminView] = useState(false);
+  const { isAdmin } = useUserRole();
 
   const {
     activeHabits, archivedHabits, completions, today,
@@ -68,6 +72,16 @@ const HabitTracker = () => {
             <h1 className="text-2xl font-bold text-foreground tracking-tight">Akestron Tracker</h1>
           </div>
           <div className="flex items-center gap-2">
+            {isAdmin && (
+              <Button
+                variant={adminView ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setAdminView(!adminView)}
+                className={adminView ? "bg-gradient-to-r from-[hsl(45,90%,55%)] to-[hsl(30,90%,55%)] text-black" : "text-muted-foreground hover:text-foreground"}
+              >
+                <Shield className="w-4 h-4 mr-1.5" /> {adminView ? "Exit Admin" : "Admin"}
+              </Button>
+            )}
             <ExportShare habits={activeHabits} completions={completions} bestStreak={bestStreak} todayRate={todayRate} />
             <Button variant="ghost" size="icon" onClick={toggleTheme} className="text-muted-foreground hover:text-foreground">
               {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -78,6 +92,10 @@ const HabitTracker = () => {
           </div>
         </div>
 
+        {adminView && isAdmin ? (
+          <AdminDashboard />
+        ) : (
+          <>
         {/* Add Habit */}
         <Card className="mb-6 border-[hsl(260,30%,18%)] bg-[hsl(250,40%,10%,0.6)] backdrop-blur-lg">
           <CardContent className="pt-6">
@@ -164,6 +182,8 @@ const HabitTracker = () => {
           onRestore={(id) => updateHabit.mutate({ id, archived: false })}
           onDelete={(id) => deleteHabit.mutate(id)}
         />
+          </>
+        )}
       </div>
     </div>
   );
