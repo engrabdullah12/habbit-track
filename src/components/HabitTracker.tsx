@@ -24,6 +24,8 @@ const HabitTracker = () => {
   const { theme, toggleTheme } = useTheme();
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [showTemplates, setShowTemplates] = useState(false);
+  const [adminView, setAdminView] = useState(false);
+  const { isAdmin } = useUserRole();
 
   const {
     activeHabits, archivedHabits, completions, today,
