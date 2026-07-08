@@ -72,7 +72,6 @@ const HabitTracker = () => {
             <h1 className="text-2xl font-bold text-foreground tracking-tight">Akestron Tracker</h1>
           </div>
           <div className="flex items-center gap-2">
-            <ExportShare habits={activeHabits} completions={completions} bestStreak={bestStreak} todayRate={todayRate} />
             {isAdmin && (
               <Button
                 variant={adminView ? "default" : "ghost"}
