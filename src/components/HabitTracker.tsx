@@ -16,6 +16,7 @@ import HabitTemplates from "@/components/habits/HabitTemplates";
 import ArchivedHabits from "@/components/habits/ArchivedHabits";
 import ExportShare from "@/components/habits/ExportShare";
 import TimeTracker from "@/components/habits/TimeTracker";
+import TimeDashboard from "@/components/habits/TimeDashboard";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import { useUserRole } from "@/hooks/useUserRole";
 
@@ -132,6 +133,7 @@ const HabitTracker = () => {
 
         {/* Time Tracker */}
         <TimeTracker />
+        <TimeDashboard />
 
         {/* Habits List */}
         <div className="space-y-3 mb-10">
